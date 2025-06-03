@@ -1,0 +1,118 @@
+@import "tailwindcss";
+@import "./animation.css";
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-card: hsl(var(--card));
+}
+
+[data-theme="light"] {
+  --background: 210 40% 90%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 96%;
+  --primary: 199 89% 48%;
+  --primary-foreground: 210 40% 10%;
+  --border: 214 32% 91%;
+  --star-color: 190 100% 65%;
+  --star-border: rgba(0, 0, 0, 0.3);
+  --star-glow: rgba(80, 235, 255, 0.3);
+  --meteor-from: rgba(47, 129, 237, 0.3);
+  --meteor-to: rgba(47, 129, 237, 0);
+  --meteor-glow-opacity: 0.2;
+}
+
+[data-theme="dark"] {
+  --background: 222 47% 4%;
+  --foreground: 213 31% 91%;
+  --card: 222 47% 8%;
+  --primary: 190 100% 50%;
+  --primary-foreground: 222 47% 11%;
+  --border: 217 33% 20%;
+  --star-color: 190 100% 80%;
+  --star-border: rgba(80, 235, 255, 0.4);
+  --star-glow: rgba(80, 235, 255, 0.4);
+  --meteor-from: rgba(80, 235, 255, 0.8);
+  --meteor-to: rgba(80, 235, 255, 0);
+  --meteor-glow-opacity: 0.4;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+
+  @media (width >= 640px) {
+    max-width: 640px;
+  }
+  @media (width >= 768px) {
+    max-width: 768px;
+  }
+  @media (width >= 1024px) {
+    max-width: 1024px;
+  }
+  @media (width >= 1280px) {
+    max-width: 1280px;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+@utility text-glow {
+  @apply relative;
+  text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+}
+
+@utility card-hover {
+  @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
+}
+
+@utility gradient-border {
+  @apply relative rounded-md;
+  background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
+  background-clip: padding-box;
+  border: 1px solid transparent;
+}
+
+@utility cosmic-button {
+  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium 
+         transition-all duration-300 hover:shadow-[0_0_10px_rgba(139,92,246,0.5)]
+         hover:scale-105 active:scale-95;
+}
+
+@utility star {
+  @apply absolute rounded-full;
+  background-color: hsl(var(--star-color));
+  box-shadow: 0 0 2px 2px var(--star-border), 0 0 10px 2px var(--star-glow);
+}
+
+@utility meteor {
+  @apply absolute rounded-full;
+  background: linear-gradient(to right, var(--meteor-from), var(--meteor-to));
+  box-shadow: 0 0 10px 5px rgba(80, 235, 255, var(--meteor-glow-opacity));
+}
+
+#root {
+  max-width: 100%;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+}
