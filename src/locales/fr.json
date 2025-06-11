@@ -1,0 +1,54 @@
+{
+  "hero": {
+    "occupations": {
+      "fullstack": "Développeur Fullstack",
+      "gamedev": "Développeur de Jeux Vidéo"
+    },
+    "title": {
+      "part1": "Créer des expériences numériques",
+      "accent": "avec créativité",
+      "part2": "et précision"
+    },
+    "description": "Je suis un freelance fullstack passionné et un développeur de jeux indépendant en devenir. Je me spécialise dans la création d'applications web dynamiques et d'expériences numériques immersives. Donnons vie à vos idées avec créativité et précision.",
+    "buttons": {
+      "exploreWork": "Découvrir mes projets",
+      "getInTouch": "Me contacter"
+    },
+    "skills": {
+      "webDev": {
+        "title": "Développement Web Moderne",
+        "description": "Création d'applications web performantes avec les dernières technologies"
+      },
+      "solutions": {
+        "title": "Solutions Sur Mesure",
+        "description": "Développement d'applications adaptées à vos besoins spécifiques"
+      },
+      "projectManagement": {
+        "title": "Gestion de Projet",
+        "description": "Suivi et développement agile de projets techniques"
+      },
+      "gameDev": {
+        "title": "Game Development",
+        "description": "Création de jeux vidéo avec une approche innovante"
+      }
+    },
+    "experience": {
+      "part1": "Fort de ",
+      "years7": "7 ans d'expérience",
+      "teaching": " dans l'enseignement de la méthodologie projet, j'ai accompagné des étudiants vers des carrières tech variées. Ces ",
+      "years3": "3 dernières années",
+      "specialization": ", j'ai choisi de me spécialiser en développement web, transformant ma polyvalence en expertise technique."
+    },
+    "current": {
+      "part1": "Aujourd'hui ",
+      "role": "développeur fullstack freelance",
+      "part2": " à la recherche de nouvelles missions, j'occupe mon temps libre au développement de jeux vidéo, combinant créativité et expertise technique dans chaque projet."
+    }
+  },
+  "navbar": {
+    "home": "Accueil",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "contact": "Contact"
+  }
+}

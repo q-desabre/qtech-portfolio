@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 
 // id, size, x, y, opacity, animationDuration
 // id, size, x, y, delay, animationDuration
@@ -6,25 +6,93 @@ import { useEffect, useState } from "react";
 const StarBackground = () => {
   const [stars, setStars] = useState([]);
   const [meteors, setMeteors] = useState([]);
+  const MIN_METEORS = 5;
+  const MAX_METEORS = 8;
+  const meteorIdCounter = useRef(0);
+
+  const generateId = () => {
+    meteorIdCounter.current += 1;
+    return `meteor-${meteorIdCounter.current}`;
+  };
+
+  const getRandomY = useCallback(() => {
+    return Math.random() * 40;
+  }, []);
+
+  const getRandomX = useCallback(() => {
+    return Math.random() * 90;
+  }, []);
+
+  const addMeteor = useCallback(() => {
+    const newMeteor = {
+      id: generateId(),
+      size: Math.random() * 2 + 1,
+      x: getRandomX(),
+      y: getRandomY(),
+      animationDuration: Math.random() * 2 + 5,
+    };
+
+    setMeteors((prev) => {
+      if (prev.length < MAX_METEORS) {
+        return [...prev, newMeteor];
+      }
+      return prev;
+    });
+
+    const removalDelay = newMeteor.animationDuration * 0.75 * 1000;
+
+    setTimeout(() => {
+      setMeteors((prev) => {
+        const filtered = prev.filter((m) => m.id !== newMeteor.id);
+        if (filtered.length < MIN_METEORS) {
+          return [
+            ...filtered,
+            {
+              ...newMeteor,
+              id: generateId(),
+              x: getRandomX(),
+              y: getRandomY(),
+            },
+          ];
+        }
+        return filtered;
+      });
+    }, removalDelay);
+  }, [getRandomX, getRandomY]);
 
   useEffect(() => {
     generateStars();
-    generateMeteors();
+
+    // Initial meteors
+    for (let i = 0; i < MIN_METEORS; i++) {
+      setTimeout(() => addMeteor(), i * 500);
+    }
+
+    // Check every 2 seconds if we need more meteors
+    const meteorInterval = setInterval(() => {
+      setMeteors((prev) => {
+        if (prev.length < MIN_METEORS) {
+          addMeteor();
+        }
+        return prev;
+      });
+    }, 1000);
 
     const handleResize = () => {
       generateStars();
     };
 
     window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearInterval(meteorInterval);
+    };
+  }, [addMeteor]);
 
   const generateStars = () => {
     const numberOfStars = Math.floor(
       (window.innerWidth * window.innerHeight) / 10000
     );
-
     const newStars = [];
 
     for (let i = 0; i < numberOfStars; i++) {
@@ -41,27 +109,12 @@ const StarBackground = () => {
     setStars(newStars);
   };
 
-  const generateMeteors = () => {
-    const numberOfMeteors = 4;
-    const newMeteors = [];
-
-    for (let i = 0; i < numberOfMeteors; i++) {
-      newMeteors.push({
-        id: i,
-        size: Math.random() * 2 + 1,
-        x: Math.random() * 100,
-        y: Math.random() * 40,
-        delay: Math.random() * 15,
-        animationDuration: Math.random() * 3 + 3,
-      });
-    }
-
-    setMeteors(newMeteors);
-  };
-
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {stars.map((star) => (
+    <div
+      className="fixed inset-0 overflow-hidden pointer-events-none"
+      style={{ zIndex: 1 }}
+    >
+      {stars?.map((star) => (
         <div
           key={star.id}
           className="star animate-pulse-subtle"
@@ -76,17 +129,17 @@ const StarBackground = () => {
         />
       ))}
 
-      {meteors.map((meteor) => (
+      {meteors?.map((meteor) => (
         <div
           key={meteor.id}
-          className="meteor animate-meteor"
+          className="meteor"
           style={{
             width: meteor.size * 50 + "px",
             height: meteor.size * 2 + "px",
             left: meteor.x + "%",
             top: meteor.y + "%",
-            animationDelay: meteor.delay,
             animationDuration: meteor.animationDuration + "s",
+            transform: "translateZ(0)",
           }}
         />
       ))}

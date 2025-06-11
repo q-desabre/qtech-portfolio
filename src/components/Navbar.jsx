@@ -2,33 +2,50 @@ import { cn } from "@/utils/utils";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
-
-const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
-];
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
+  const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.screenY > 10);
+      const currentScrollY = window.scrollY;
+
+      // Détermine si on doit montrer ou cacher la navbar
+      setIsVisible(currentScrollY < lastScrollY || currentScrollY < 10);
+      setIsScrolled(currentScrollY > 10);
+      setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === "en" ? "fr" : "en";
+    i18n.changeLanguage(newLang);
+  };
+
+  const navItems = [
+    { name: t("navbar.home"), href: "#hero" },
+    { name: t("navbar.skills"), href: "#skills" },
+    { name: t("navbar.projects"), href: "#projects" },
+    { name: t("navbar.contact"), href: "#contact" },
+  ];
 
   return (
     <nav
       className={cn(
         "fixed w-full z-40 transition-all duration-300",
-        isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
+        isScrolled
+          ? "py-3 bg-background/80 backdrop-blur-md shadow-xs"
+          : "py-5",
+        isVisible ? "translate-y-0" : "-translate-y-full",
+        isMenuOpen ? "!translate-y-0" : ""
       )}
     >
       <div className="container flex items-center justify-between">
@@ -52,6 +69,9 @@ const Navbar = () => {
               {item.name}
             </a>
           ))}
+          <button onClick={toggleLanguage} className="text-sm">
+            {i18n.language.toUpperCase()}
+          </button>
           <ThemeToggle className="static p-2 rounded-full transition-colors duration-300 hover:bg-primary/10" />
         </div>
 
@@ -84,6 +104,9 @@ const Navbar = () => {
                 {item.name}
               </a>
             ))}
+            <button onClick={toggleLanguage} className="text-sm mx-auto">
+              {i18n.language.toUpperCase()}
+            </button>
             <ThemeToggle
               className="static p-2 rounded-full transition-colors duration-300 hover:bg-primary/10 mx-auto"
               onClick={() => setIsMenuOpen(false)}

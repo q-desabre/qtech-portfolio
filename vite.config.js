@@ -18,5 +18,6 @@ export default defineConfig(({ mode }) => ({
       "@utils": path.resolve(__dirname, "./src/utils"),
     },
   },
-  base: "/qtech-portfolio/",
+  // Use different base URLs for dev and production
+  base: mode === "production" ? "/qtech-portfolio/" : "/",
 }));

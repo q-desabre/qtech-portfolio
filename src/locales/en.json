@@ -1,0 +1,54 @@
+{
+  "hero": {
+    "occupations": {
+      "fullstack": "Fullstack Developer",
+      "gamedev": "Indie Game Maker"
+    },
+    "title": {
+      "part1": "Crafting Digital Experiences",
+      "accent": "with Creativity",
+      "part2": "and Precision"
+    },
+    "description": "I am a passionate fullstack freelancer and an aspiring indie game developer. I specialize in crafting dynamic web applications and immersive digital experiences. Let's bring your ideas to life with creativity and precision.",
+    "buttons": {
+      "exploreWork": "Explore My Work",
+      "getInTouch": "Get In Touch"
+    },
+    "skills": {
+      "webDev": {
+        "title": "Modern Web Development",
+        "description": "Creating high-performance web applications with the latest technologies"
+      },
+      "solutions": {
+        "title": "Custom Solutions",
+        "description": "Development of applications tailored to your specific needs"
+      },
+      "projectManagement": {
+        "title": "Project Management",
+        "description": "Agile development and technical project monitoring"
+      },
+      "gameDev": {
+        "title": "Game Development",
+        "description": "Creating video games with an innovative approach"
+      }
+    },
+    "experience": {
+      "part1": "With ",
+      "years7": "7 years of experience",
+      "teaching": " in teaching project methodology, I've guided students towards diverse tech careers. Over the past ",
+      "years3": "3 years",
+      "specialization": ", I chose to specialize in web development, transforming my versatility into technical expertise."
+    },
+    "current": {
+      "part1": "Now as a ",
+      "role": "freelance fullstack developer",
+      "part2": " seeking new opportunities, I spend my free time developing video games, combining creativity and technical expertise in each project."
+    }
+  },
+  "navbar": {
+    "home": "Home",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+  }
+}
