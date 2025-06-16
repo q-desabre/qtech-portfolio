@@ -99,31 +99,36 @@ const Navbar = () => {
 
         <div
           className={cn(
-            "fixed inset-0 w-full h-screen bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
+            "fixed inset-0 w-full h-screen bg-background/95 backdrop-blur-lg z-40 flex flex-col items-center justify-center",
             "transition-all duration-300 md:hidden",
             isMenuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none translate-y-[-100%]"
           )}
         >
-          <div className="flex flex-col space-y-8 text-xl">
+          <div className="flex flex-col space-y-8 text-2xl w-full px-8">
             {navItems.map((item, key) => (
               <a
                 key={key}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300 text-center w-full"
+                className="text-foreground/80 hover:text-primary transition-colors duration-300 text-center w-full py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
               </a>
             ))}
-            <button onClick={toggleLanguage} className="text-sm mx-auto">
-              {i18n.language.toUpperCase()}
-            </button>
-            <ThemeToggle
-              className="static p-2 rounded-full transition-colors duration-300 hover:bg-primary/10 mx-auto"
-              onClick={() => setIsMenuOpen(false)}
-            />
+            <div className="flex justify-center space-x-6 items-center">
+              <button
+                onClick={toggleLanguage}
+                className="text-lg px-4 py-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors duration-300"
+              >
+                {i18n.language.toUpperCase()}
+              </button>
+              <ThemeToggle
+                className="static p-3 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors duration-300"
+                onClick={() => setIsMenuOpen(false)}
+              />
+            </div>
           </div>
         </div>
       </div>
