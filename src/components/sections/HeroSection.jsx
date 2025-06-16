@@ -7,7 +7,7 @@ const HeroSection = () => {
   return (
     <section
       id="hero-about"
-      className="relative min-h-[90vh] flex flex-col items-center justify-center p-4 sm:p-5 md:px-4 md:py-10 mt-16 sm:mt-12"
+      className="relative min-h-[85vh] flex flex-col items-center justify-center p-4 sm:p-5 md:px-4 md:py-10 mt-16 sm:mt-12"
     >
       <div
         className="container max-w-5xl mx-auto text-center z-10 p-4 sm:p-5 md:p-6"
@@ -79,8 +79,8 @@ const HeroSection = () => {
                   <div className="text-left">
                     <h4 className="font-semibold text-base md:text-lg">
                       {t("hero.skills.webDev.title")}
-                    </h4>
-                    <p className="text-sm md:text-base text-muted-foreground">
+                    </h4>{" "}
+                    <p className="hidden md:block text-sm md:text-base text-muted-foreground">
                       {t("hero.skills.webDev.description")}
                     </p>
                   </div>
@@ -94,8 +94,8 @@ const HeroSection = () => {
                   <div className="text-left">
                     <h4 className="font-semibold text-base md:text-lg">
                       {t("hero.skills.projectManagement.title")}
-                    </h4>
-                    <p className="text-sm md:text-base text-muted-foreground">
+                    </h4>{" "}
+                    <p className="hidden md:block text-sm md:text-base text-muted-foreground">
                       {t("hero.skills.projectManagement.description")}
                     </p>
                   </div>
@@ -109,8 +109,8 @@ const HeroSection = () => {
                   <div className="text-left">
                     <h4 className="font-semibold text-base md:text-lg">
                       {t("hero.skills.gameDev.title")}
-                    </h4>
-                    <p className="text-sm md:text-base text-muted-foreground">
+                    </h4>{" "}
+                    <p className="hidden md:block text-sm md:text-base text-muted-foreground">
                       {t("hero.skills.gameDev.description")}
                     </p>
                   </div>

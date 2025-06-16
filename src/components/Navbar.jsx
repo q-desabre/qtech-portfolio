@@ -25,6 +25,19 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  // Bloquer le défilement quand le menu mobile est ouvert
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
   const toggleLanguage = () => {
     const newLang = i18n.language === "en" ? "fr" : "en";
     i18n.changeLanguage(newLang);
@@ -86,11 +99,11 @@ const Navbar = () => {
 
         <div
           className={cn(
-            "fixed inset-0 bg-background/95 backdroup-blur-md z-40 flex flex-col items-center justify-center",
+            "fixed inset-0 w-full h-screen bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
             "transition-all duration-300 md:hidden",
             isMenuOpen
               ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
+              : "opacity-0 pointer-events-none translate-y-[-100%]"
           )}
         >
           <div className="flex flex-col space-y-8 text-xl">
@@ -98,7 +111,7 @@ const Navbar = () => {
               <a
                 key={key}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                className="text-foreground/80 hover:text-primary transition-colors duration-300 text-center w-full"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
