@@ -7,10 +7,10 @@ const HeroSection = () => {
   return (
     <section
       id="hero-about"
-      className="relative min-h-screen flex flex-col items-center justify-center p-4 sm:p-8 md:px-4 md:py-24 mt-24 sm:mt-28"
+      className="relative min-h-[90vh] flex flex-col items-center justify-center p-4 sm:p-6 md:px-4 md:py-16 mt-16 sm:mt-20"
     >
       <div
-        className="container max-w-5xl mx-auto text-center z-10 p-6 sm:p-8 md:p-12"
+        className="container max-w-5xl mx-auto text-center z-10 p-4 sm:p-6 md:p-8"
         style={{
           backgroundColor: "rgba(255, 255, 255, 0.02)",
           borderRadius: "25px",
@@ -27,7 +27,7 @@ const HeroSection = () => {
           e.currentTarget.style.boxShadow = "0 8px 32px rgba(0, 0, 0, 0.2)";
         }}
       >
-        <div className="flex flex-col items-center space-y-4 sm:space-y-6">
+        <div className="flex flex-col items-center space-y-3 sm:space-y-4">
           <h1 className="text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tight leading-tight px-2">
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 drop-shadow-lg">
               Quentin Desabre
@@ -47,8 +47,8 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <div className="mt-8 sm:mt-12 md:mt-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+        <div className="mt-6 sm:mt-8 md:mt-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             <div className="text-left space-y-4 md:space-y-6 px-2">
               <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground leading-relaxed">
                 {t('hero.experience.part1')}
@@ -135,7 +135,7 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <div className="pt-8 sm:pt-12 md:pt-16 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+        <div className="pt-6 sm:pt-8 md:pt-12 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
           <a
             href="#projects"
             className="px-6 sm:px-8 py-3 sm:py-4 text-lg sm:text-xl font-medium text-white bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-500 hover:to-cyan-500 transition-all duration-300"
