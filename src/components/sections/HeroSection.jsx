@@ -3,13 +3,12 @@ import { useTranslation } from "react-i18next";
 
 const HeroSection = () => {
   const { t } = useTranslation();
-  return (
-    <section
+  return (    <section
       id="hero-about"
-      className="relative min-h-screen flex flex-col items-center justify-center px-3 xxs:px-4 sm:px-10 pt-20 xxs:pt-16 sm:pt-16 pb-4 sm:pb-0"
+      className="relative min-h-screen flex flex-col items-center justify-center px-3 xxs:px-4 sm:px-10 pt-20 xxs:pt-16 sm:pt-16 pb-4 sm:pb-0 hero-skills-transition"
     >
       <div
-        className="container max-w-5xl mx-auto text-center z-10 p-2 xxs:p-3 sm:p-5 md:p-6"
+        className="container max-w-5xl 2xl:max-w-7xl mx-auto text-center z-10 p-2 xxs:p-3 sm:p-5 md:p-6"
         style={{
           backgroundColor: "rgba(255, 255, 255, 0.02)",
           borderRadius: "25px",
@@ -28,19 +27,19 @@ const HeroSection = () => {
       >
         <div className="flex flex-col items-center space-y-2 sm:space-y-3">
           {" "}
-          <h1 className="text-2xl xxs:text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-tight px-1 sm:px-2">
+          <h1 className="text-2xl xxs:text-3xl sm:text-5xl md:text-7xl 2xl:text-8xl font-extrabold tracking-tight leading-tight px-1 sm:px-2">
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 drop-shadow-lg">
               Quentin Desabre
             </span>
           </h1>{" "}
           <div className="flex flex-col sm:flex-row w-full max-w-5xl px-1 xxs:px-2 sm:px-3 space-y-1 sm:space-y-0">
             <div className="flex-1 flex justify-center">
-              <span className="text-sm xxs:text-base sm:text-xl md:text-2xl lg:text-3xl font-bold text-cyan-500 whitespace-normal">
+              <span className="text-sm xxs:text-base sm:text-xl md:text-2xl lg:text-3xl 2xl:text-4xl font-bold text-cyan-500 whitespace-normal">
                 {t("hero.occupations.fullstack")}
               </span>
             </div>
             <div className="flex-1 flex justify-center">
-              <span className="text-sm xxs:text-base sm:text-xl md:text-2xl lg:text-3xl font-bold text-blue-500 whitespace-normal">
+              <span className="text-sm xxs:text-base sm:text-xl md:text-2xl lg:text-3xl 2xl:text-4xl font-bold text-blue-500 whitespace-normal">
                 {t("hero.occupations.gamedev")}
               </span>
             </div>

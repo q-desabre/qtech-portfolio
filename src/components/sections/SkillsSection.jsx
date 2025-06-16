@@ -79,9 +79,9 @@ const SkillsSection = () => {
   };
 
   return (
-    <section id="skills" className="py-16 px-4 relative bg-secondary/30 z-10">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
+    <section id="skills" className="py-12 md:py-16 px-4 relative bg-secondary/30 z-10 mt-0 sm:mt-2 transition-opacity duration-500">
+      <div className="container mx-auto max-w-5xl 2xl:max-w-7xl">
+        <h2 className="text-3xl md:text-4xl 2xl:text-5xl font-bold mb-8 text-center">
           My <span className="text-primary">Skills</span>
         </h2>
 
@@ -119,7 +119,7 @@ const SkillsSection = () => {
         </div>
 
         {/* Skills Grid - Mobile Friendly with Bubbles */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 md:gap-6 2xl:gap-8">
           {filteredSkills.map((skill, key) => (
             <div
               key={key}

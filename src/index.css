@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "./animation.css";
 
+html {
+  scroll-behavior: smooth;
+}
+
 @theme {
   --color-border: hsl(var(--border));
   --color-background: hsl(var(--background));
@@ -233,4 +237,22 @@
   text-align: center;
   z-index: 10;
   position: relative;
+}
+
+@layer utilities {
+  /* Hero-Skills transition animation class */
+  .animate-hero-skills-enter {
+    animation: heroSkillsEnter 0.8s ease-out forwards;
+  }
+
+  @keyframes heroSkillsEnter {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

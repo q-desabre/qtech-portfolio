@@ -111,12 +111,12 @@ const ContactSection = () => {
       id="contact"
       className="py-16 sm:py-20 px-4 relative bg-secondary/30 z-10"
     >
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+      <div className="container mx-auto max-w-5xl 2xl:max-w-7xl">
+        <h2 className="text-3xl md:text-4xl 2xl:text-5xl font-bold mb-4 text-center">
           Get In <span className="text-primary">Touch</span>
         </h2>
 
-        <p className="text-center text-xs xxs:text-sm sm:text-base text-muted-foreground mb-8 sm:mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-xs xxs:text-sm sm:text-base text-muted-foreground mb-8 sm:mb-12 max-w-2xl 2xl:max-w-3xl mx-auto">
           Have a project in mind or want to collaborate? Feel free to reach out.
           I'm always open to discussing new opportunities.
         </p>

@@ -44,7 +44,7 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { name: t("navbar.home"), href: "#hero" },
+    { name: t("navbar.home"), href: "#hero-about" },
     { name: t("navbar.skills"), href: "#skills" },
     { name: t("navbar.projects"), href: "#projects" },
     { name: t("navbar.contact"), href: "#contact" },
@@ -61,7 +61,7 @@ const Navbar = () => {
         isMenuOpen ? "!translate-y-0" : ""
       )}
     >
-      <div className="container flex items-center justify-between">
+      <div className="container 2xl:max-w-7xl mx-auto flex items-center justify-between">
         <a
           className="text-xl font-bold text-primary flex items-center"
           href="#hero"
